@@ -9,7 +9,7 @@ from typing import List, Literal
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 
-ModelProvider = Literal["gemini", "openai"]
+ModelProvider = Literal["gemini", "openai", "groq"]
 
 
 class Parameter(BaseModel):
@@ -63,6 +63,7 @@ class AppConfig(BaseModel):
     model_name: str
     google_api_key: str | None = None
     openai_api_key: str | None = None
+    groq_api_key: str | None = None
     prompt_path: Path
     input_dir: Path
     output_dir: Path
@@ -95,6 +96,7 @@ class AppConfig(BaseModel):
                 model_name=model_name,
                 google_api_key=os.getenv("GOOGLE_API_KEY"),
                 openai_api_key=os.getenv("OPENAI_API_KEY"),
+                groq_api_key=os.getenv("GROQ_API_KEY"),
                 prompt_path=prompt_path,
                 input_dir=input_dir,
                 output_dir=output_dir,

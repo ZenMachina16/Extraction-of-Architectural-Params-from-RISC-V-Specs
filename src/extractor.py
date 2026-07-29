@@ -119,6 +119,39 @@ class OpenAIClient(BaseLLMClient):
         return text
 
 
+class GroqClient(BaseLLMClient):
+    """Groq implementation of the LLM client interface."""
+
+    def __init__(self, model_name: str, api_key: str, temperature: float) -> None:
+        super().__init__(model_name=model_name, temperature=temperature)
+
+        from groq import Groq
+
+        self._client = Groq(api_key=api_key)
+
+    @property
+    def provider_name(self) -> str:
+        return "groq"
+
+    def generate(self, prompt: str) -> str:
+        """Generate YAML text with Groq."""
+        import groq
+
+        try:
+            response = self._client.chat.completions.create(
+                model=self.model_name,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=self.temperature,
+            )
+        except groq.RateLimitError as exc:
+            raise RateLimitException(str(exc)) from exc
+
+        text = response.choices[0].message.content
+        if not text:
+            raise ValueError("Groq returned an empty response.")
+        return text
+
+
 def create_llm_client(config: AppConfig) -> BaseLLMClient:
     """Instantiate the configured provider client."""
     if config.model_provider == "gemini":
@@ -136,6 +169,15 @@ def create_llm_client(config: AppConfig) -> BaseLLMClient:
         return OpenAIClient(
             model_name=config.model_name,
             api_key=config.openai_api_key,
+            temperature=config.temperature,
+        )
+
+    if config.model_provider == "groq":
+        if not config.groq_api_key:
+            raise ValueError("GROQ_API_KEY is required for MODEL_PROVIDER=groq.")
+        return GroqClient(
+            model_name=config.model_name,
+            api_key=config.groq_api_key,
             temperature=config.temperature,
         )
 

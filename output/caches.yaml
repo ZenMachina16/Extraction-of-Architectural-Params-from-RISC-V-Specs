@@ -1,0 +1,40 @@
+metadata:
+  provider: groq
+  model: openai/gpt-oss-120b
+  source_file: caches.txt
+  generated_at: '2026-07-29T22:12:08Z'
+parameters:
+- name: cache_capacity
+  description: The total amount of data that a cache can hold.
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: The capacity and organization of a cache and the size of a cache
+    block are both implementation-specific, and the execution environment provides
+    software a means to discover information about the caches and cache blocks in
+    a system.
+- name: cache_organization
+  description: "The structural arrangement of a cache (e.g., set\u2011associative,\
+    \ direct\u2011mapped, etc.)."
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: The capacity and organization of a cache and the size of a cache
+    block are both implementation-specific, and the execution environment provides
+    software a means to discover information about the caches and cache blocks in
+    a system.
+- name: cache_block_size
+  description: The size of a cache block, which is uniform throughout the system.
+  classification: implementation-specific
+  type: unspecified
+  constraints:
+  - shall be uniform throughout the system
+  - "represents a contiguous, naturally aligned power\u2011of\u2011two (or NAPOT)\
+    \ range of memory locations"
+  evidence_quote: "\"Caches organize copies of data into cache blocks, each of which\
+    \ represents a contiguous, naturally aligned power\u2011of\u2011two (or NAPOT)\
+    \ range of memory locations.\"\n\"The capacity and organization of a cache and\
+    \ the size of a cache block are both implementation-specific, and the execution\
+    \ environment provides software a means to discover information about the caches\
+    \ and cache blocks in a system. In the initial set of CMO extensions, the size\
+    \ of a cache block shall be uniform throughout the system.\""
