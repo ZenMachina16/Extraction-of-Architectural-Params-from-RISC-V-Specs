@@ -1,0 +1,6 @@
+metadata:
+  provider: gemini
+  model: gemini-3.5-flash
+  source_file: csr.txt
+  generated_at: '2026-07-29T21:29:50Z'
+parameters: []

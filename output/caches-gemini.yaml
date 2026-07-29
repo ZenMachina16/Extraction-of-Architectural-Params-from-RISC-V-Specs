@@ -1,0 +1,34 @@
+metadata:
+  provider: gemini
+  model: gemini-3.5-flash
+  source_file: caches.txt
+  generated_at: '2026-07-29T21:29:40Z'
+parameters:
+- name: Cache capacity
+  description: The capacity of a cache.
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: The capacity and organization of a cache and the size of a cache
+    block are both implementation-specific
+- name: Cache organization
+  description: The organization of a cache.
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: The capacity and organization of a cache and the size of a cache
+    block are both implementation-specific
+- name: Cache block size
+  description: The size of a cache block.
+  classification: implementation-specific
+  type: unspecified
+  constraints:
+  - each of which represents a contiguous, naturally aligned power-of-two (or NAPOT)
+    range of memory locations.
+  - In the initial set of CMO extensions, the size of a cache block shall be uniform
+    throughout the system.
+  evidence_quote: The capacity and organization of a cache and the size of a cache
+    block are both implementation-specific, and the execution environment provides
+    software a means to discover information about the caches and cache blocks in
+    a system. In the initial set of CMO extensions, the size of a cache block shall
+    be uniform throughout the system.
