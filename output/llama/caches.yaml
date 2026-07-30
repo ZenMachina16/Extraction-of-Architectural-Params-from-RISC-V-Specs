@@ -1,0 +1,25 @@
+metadata:
+  provider: groq
+  model: llama-3.3-70b-versatile
+  source_file: caches.txt
+  generated_at: '2026-07-29T22:24:43Z'
+parameters:
+- name: Cache capacity
+  description: The total amount of data that a cache can hold
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: the capacity... of a cache... are both implementation-specific
+- name: Cache organization
+  description: The structure and layout of a cache
+  classification: implementation-specific
+  type: unspecified
+  constraints: []
+  evidence_quote: the capacity and organization of a cache... are both implementation-specific
+- name: Cache block size
+  description: The size of a cache block
+  classification: implementation-specific
+  type: power-of-two
+  constraints:
+  - uniform throughout the system
+  evidence_quote: the size of a cache block... shall be uniform throughout the system

@@ -1,0 +1,30 @@
+metadata:
+  provider: groq
+  model: llama-3.3-70b-versatile
+  source_file: csr.txt
+  generated_at: '2026-07-29T22:24:44Z'
+parameters:
+- name: csr[11:0]
+  description: 12-bit encoding space for up to 4,096 CSRs
+  classification: implementation-specific
+  type: integer
+  constraints:
+  - 12 bits
+  evidence_quote: The standard RISC-V ISA sets aside a 12-bit encoding space (csr[11:0])
+    for up to 4,096 CSRs
+- name: csr[11:10]
+  description: indicates whether the register is read/write or read-only
+  classification: implementation-specific
+  type: integer
+  constraints:
+  - 2 bits
+  evidence_quote: The top two bits (csr[11:10]) indicate whether the register is read/write
+    (00,01, or 10) or read-only (11)
+- name: csr[9:8]
+  description: encodes the lowest privilege level that can access the CSR
+  classification: implementation-specific
+  type: integer
+  constraints:
+  - 2 bits
+  evidence_quote: The next two bits (csr[9:8]) encode the lowest privilege level that
+    can access the CSR
