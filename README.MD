@@ -428,6 +428,3 @@ Llama 3.3 70B Versatile correctly extracted the cache-related parameters but sho
 
 ---
 
-## License
-
-Add your chosen license here (e.g. MIT, Apache 2.0). RISC-V specification text referenced/quoted in this repository remains subject to its original license from RISC-V International.
